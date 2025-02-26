@@ -1,0 +1,66 @@
+.*.iml
+.composite-enable
+.gradle
+/local.properties
+/.idea/caches
+/.idea/libraries
+/.idea/modules.xml
+/.idea/workspace.xml
+/.idea/navEditor.xml
+/.idea/assetWizardSettings.xml
+.DS_Store
+
+**/*.iml
+
+# VSCode
+.project
+.settings/org.eclipse.buildship.core.prefs
+app/.classpath
+app/.settings/org.eclipse.buildship.core.prefs
+app/*.enc
+
+# Keystores
+*.jks
+app/*.keystore
+*.keystore
+
+# CAPTURE and BUILDS
+/build
+/captures
+.externalNativeBuild
+
+# Ruby GEMS and BUNDLE
+/vendor
+.bundle
+.idea
+
+# fastlane
+**/fastlane/report.xml
+**/fastlane/Preview.html
+**/fastlane/screenshots
+**/fastlane/test_output
+**/fastlane/README.md
+
+# Build Signing Items
+app/keystore.json
+app/serviceKey.json
+app/properties.json
+emulatorfarm.log
+emulatorfarm-ui.log
+uploader.sh
+testResult.xml
+testResult-ui.xml
+emulatorfarm-ui.log
+
+# Intuit GitHooks
+.intuitgithookrc
+
+# Buil dMetrics
+build-metrics.json
+local.properties
+
+# checkmarx
+Checkmarx/
+
+# NPM Related files for auto plugins
+node_modules

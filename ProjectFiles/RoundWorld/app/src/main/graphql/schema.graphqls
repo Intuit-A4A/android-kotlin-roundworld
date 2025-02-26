@@ -1,0 +1,324 @@
+type Query {
+  """
+  The ID of the object
+  """
+  country(id: ID!): CountryNode
+
+  countries(offset: Int, before: String, after: String, first: Int, last: Int, name: String, name_Icontains: String, name_Istartswith: String, alpha2Code: String, alpha2Code_Icontains: String, alpha2Code_Istartswith: String, alpha3Code: String, alpha3Code_Icontains: String, alpha3Code_Istartswith: String, capital: String, capital_Icontains: String, capital_Istartswith: String, region: String, region_Icontains: String, region_Istartswith: String, subregion: String, subregion_Icontains: String, subregion_Istartswith: String, population: Int, population_Lte: Int, population_Gte: Int, demonym: String, demonym_Icontains: String, demonym_Istartswith: String, area: Int, area_Lte: Int, area_Gte: Int, gini: Float, gini_Lte: Float, gini_Gte: Float, nativeName: String, nativeName_Icontains: String, nativeName_Istartswith: String, numericCode: String, numericCode_Icontains: String, numericCode_Istartswith: String, cioc: String, cioc_Icontains: String, cioc_Istartswith: String, active: Boolean): CountryNodeConnection
+
+  """
+  The ID of the object
+  """
+  currency(id: ID!): CurrencyNode
+
+  currencies(offset: Int, before: String, after: String, first: Int, last: Int, name: String, name_Icontains: String, name_Istartswith: String, code: String, code_Icontains: String, code_Istartswith: String, symbol: String, symbol_Icontains: String, symbol_Istartswith: String, active: Boolean): CurrencyNodeConnection
+
+  """
+  The ID of the object
+  """
+  language(id: ID!): LanguageNode
+
+  languages(offset: Int, before: String, after: String, first: Int, last: Int, iso6391: String, iso6391_Icontains: String, iso6391_Istartswith: String, iso6392: String, iso6392_Icontains: String, iso6392_Istartswith: String, name: String, name_Icontains: String, name_Istartswith: String, nativeName: String, nativeName_Icontains: String, nativeName_Istartswith: String, active: Boolean): LanguageNodeConnection
+
+  """
+  The ID of the object
+  """
+  regionalBloc(id: ID!): RegionalBlocNode
+
+  regionalBlocs(offset: Int, before: String, after: String, first: Int, last: Int, acronym: String, acronym_Icontains: String, acronym_Istartswith: String, name: String, name_Icontains: String, name_Istartswith: String, active: Boolean): RegionalBlocNodeConnection
+}
+
+type CountryNode implements Node {
+  """
+  The ID of the object.
+  """
+  id: ID!
+
+  dateAdded: DateTime
+
+  dateModified: DateTime!
+
+  active: Boolean!
+
+  name: String!
+
+  topLevelDomain: [String!]
+
+  alpha2Code: String
+
+  alpha3Code: String
+
+  callingCodes: [String!]
+
+  capital: String
+
+  altSpellings: [String!]
+
+  region: String
+
+  subregion: String
+
+  population: Int
+
+  latLng: [Decimal!]
+
+  demonym: String
+
+  area: Int
+
+  gini: Decimal
+
+  timezones: [String!]
+
+  borders: [String!]
+
+  nativeName: String
+
+  numericCode: String
+
+  currencies(offset: Int, before: String, after: String, first: Int, last: Int, name: String, name_Icontains: String, name_Istartswith: String, code: String, code_Icontains: String, code_Istartswith: String, symbol: String, symbol_Icontains: String, symbol_Istartswith: String, active: Boolean): CurrencyNodeConnection!
+
+  languages(offset: Int, before: String, after: String, first: Int, last: Int, iso6391: String, iso6391_Icontains: String, iso6391_Istartswith: String, iso6392: String, iso6392_Icontains: String, iso6392_Istartswith: String, name: String, name_Icontains: String, name_Istartswith: String, nativeName: String, nativeName_Icontains: String, nativeName_Istartswith: String, active: Boolean): LanguageNodeConnection!
+
+  translations: JSONString
+
+  flag: String
+
+  regionalBlocs(offset: Int, before: String, after: String, first: Int, last: Int, acronym: String, acronym_Icontains: String, acronym_Istartswith: String, name: String, name_Icontains: String, name_Istartswith: String, active: Boolean): RegionalBlocNodeConnection!
+
+  cioc: String
+}
+
+"""
+An object with an ID
+"""
+interface Node {
+  """
+  The ID of the object.
+  """
+  id: ID!
+}
+
+"""
+The `DateTime` scalar type represents a DateTime
+value as specified by
+[iso8601](https://en.wikipedia.org/wiki/ISO_8601).
+"""
+scalar DateTime
+
+"""
+The `Decimal` scalar type represents a python Decimal.
+"""
+scalar Decimal
+
+type CurrencyNodeConnection {
+  """
+  Pagination data for this connection.
+  """
+  pageInfo: PageInfo!
+
+  """
+  Contains the nodes in this connection.
+  """
+  edges: [CurrencyNodeEdge]!
+}
+
+"""
+The Relay compliant `PageInfo` type, containing data necessary to paginate this connection.
+"""
+type PageInfo {
+  """
+  When paginating forwards, are there more items?
+  """
+  hasNextPage: Boolean!
+
+  """
+  When paginating backwards, are there more items?
+  """
+  hasPreviousPage: Boolean!
+
+  """
+  When paginating backwards, the cursor to continue.
+  """
+  startCursor: String
+
+  """
+  When paginating forwards, the cursor to continue.
+  """
+  endCursor: String
+}
+
+"""
+A Relay edge containing a `CurrencyNode` and its cursor.
+"""
+type CurrencyNodeEdge {
+  """
+  The item at the end of the edge
+  """
+  node: CurrencyNode
+
+  """
+  A cursor for use in pagination
+  """
+  cursor: String!
+}
+
+type CurrencyNode implements Node {
+  dateAdded: DateTime
+
+  dateModified: DateTime!
+
+  active: Boolean!
+
+  """
+  The ID of the object.
+  """
+  id: ID!
+
+  code: String
+
+  name: String
+
+  symbol: String
+
+  countrySet(offset: Int, before: String, after: String, first: Int, last: Int, name: String, name_Icontains: String, name_Istartswith: String, alpha2Code: String, alpha2Code_Icontains: String, alpha2Code_Istartswith: String, alpha3Code: String, alpha3Code_Icontains: String, alpha3Code_Istartswith: String, capital: String, capital_Icontains: String, capital_Istartswith: String, region: String, region_Icontains: String, region_Istartswith: String, subregion: String, subregion_Icontains: String, subregion_Istartswith: String, population: Int, population_Lte: Int, population_Gte: Int, demonym: String, demonym_Icontains: String, demonym_Istartswith: String, area: Int, area_Lte: Int, area_Gte: Int, gini: Float, gini_Lte: Float, gini_Gte: Float, nativeName: String, nativeName_Icontains: String, nativeName_Istartswith: String, numericCode: String, numericCode_Icontains: String, numericCode_Istartswith: String, cioc: String, cioc_Icontains: String, cioc_Istartswith: String, active: Boolean): CountryNodeConnection!
+}
+
+type CountryNodeConnection {
+  """
+  Pagination data for this connection.
+  """
+  pageInfo: PageInfo!
+
+  """
+  Contains the nodes in this connection.
+  """
+  edges: [CountryNodeEdge]!
+}
+
+"""
+A Relay edge containing a `CountryNode` and its cursor.
+"""
+type CountryNodeEdge {
+  """
+  The item at the end of the edge
+  """
+  node: CountryNode
+
+  """
+  A cursor for use in pagination
+  """
+  cursor: String!
+}
+
+type LanguageNodeConnection {
+  """
+  Pagination data for this connection.
+  """
+  pageInfo: PageInfo!
+
+  """
+  Contains the nodes in this connection.
+  """
+  edges: [LanguageNodeEdge]!
+}
+
+"""
+A Relay edge containing a `LanguageNode` and its cursor.
+"""
+type LanguageNodeEdge {
+  """
+  The item at the end of the edge
+  """
+  node: LanguageNode
+
+  """
+  A cursor for use in pagination
+  """
+  cursor: String!
+}
+
+type LanguageNode implements Node {
+  dateAdded: DateTime
+
+  dateModified: DateTime!
+
+  active: Boolean!
+
+  """
+  The ID of the object.
+  """
+  id: ID!
+
+  iso6391: String
+
+  iso6392: String
+
+  name: String!
+
+  nativeName: String
+
+  countrySet(offset: Int, before: String, after: String, first: Int, last: Int, name: String, name_Icontains: String, name_Istartswith: String, alpha2Code: String, alpha2Code_Icontains: String, alpha2Code_Istartswith: String, alpha3Code: String, alpha3Code_Icontains: String, alpha3Code_Istartswith: String, capital: String, capital_Icontains: String, capital_Istartswith: String, region: String, region_Icontains: String, region_Istartswith: String, subregion: String, subregion_Icontains: String, subregion_Istartswith: String, population: Int, population_Lte: Int, population_Gte: Int, demonym: String, demonym_Icontains: String, demonym_Istartswith: String, area: Int, area_Lte: Int, area_Gte: Int, gini: Float, gini_Lte: Float, gini_Gte: Float, nativeName: String, nativeName_Icontains: String, nativeName_Istartswith: String, numericCode: String, numericCode_Icontains: String, numericCode_Istartswith: String, cioc: String, cioc_Icontains: String, cioc_Istartswith: String, active: Boolean): CountryNodeConnection!
+}
+
+"""
+Allows use of a JSON String for input / output from the GraphQL schema.
+
+Use of this type is *not recommended* as you lose the benefits of having a defined, static
+schema (one of the key benefits of GraphQL).
+"""
+scalar JSONString
+
+type RegionalBlocNodeConnection {
+  """
+  Pagination data for this connection.
+  """
+  pageInfo: PageInfo!
+
+  """
+  Contains the nodes in this connection.
+  """
+  edges: [RegionalBlocNodeEdge]!
+}
+
+"""
+A Relay edge containing a `RegionalBlocNode` and its cursor.
+"""
+type RegionalBlocNodeEdge {
+  """
+  The item at the end of the edge
+  """
+  node: RegionalBlocNode
+
+  """
+  A cursor for use in pagination
+  """
+  cursor: String!
+}
+
+type RegionalBlocNode implements Node {
+  dateAdded: DateTime
+
+  dateModified: DateTime!
+
+  active: Boolean!
+
+  """
+  The ID of the object.
+  """
+  id: ID!
+
+  acronym: String
+
+  name: String!
+
+  otherAcronyms: [String!]!
+
+  otherNames: [String!]!
+
+  countrySet(offset: Int, before: String, after: String, first: Int, last: Int, name: String, name_Icontains: String, name_Istartswith: String, alpha2Code: String, alpha2Code_Icontains: String, alpha2Code_Istartswith: String, alpha3Code: String, alpha3Code_Icontains: String, alpha3Code_Istartswith: String, capital: String, capital_Icontains: String, capital_Istartswith: String, region: String, region_Icontains: String, region_Istartswith: String, subregion: String, subregion_Icontains: String, subregion_Istartswith: String, population: Int, population_Lte: Int, population_Gte: Int, demonym: String, demonym_Icontains: String, demonym_Istartswith: String, area: Int, area_Lte: Int, area_Gte: Int, gini: Float, gini_Lte: Float, gini_Gte: Float, nativeName: String, nativeName_Icontains: String, nativeName_Istartswith: String, numericCode: String, numericCode_Icontains: String, numericCode_Istartswith: String, cioc: String, cioc_Icontains: String, cioc_Istartswith: String, active: Boolean): CountryNodeConnection!
+}
+
+schema {
+  query: Query
+}

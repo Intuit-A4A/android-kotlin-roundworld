@@ -1,0 +1,7 @@
+<resources>
+    <string name="app_name">Round the World</string>
+    <string name="search_icon_content_description">Search</string>
+    <string name="back_icon_content_description">Back</string>
+    <string name="close_icon_content_description">Close</string>
+    <string name="country_list_app_bar_title">Country List</string>
+</resources>
